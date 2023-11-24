@@ -17,7 +17,7 @@
       background-color: hsl(235, 16%, 14%);
       margin: 0;
       padding: 0;
-      font-family: 'Red Hat Text', sans-serif;
+      font-family: sans-serif;
     }
 
     .bg {
@@ -29,6 +29,7 @@
     .hills {
       position: relative;
       width: 100%;
+      height: 100%;
     }
 
     .icon {
@@ -43,8 +44,69 @@
 
     .fb, .ig, .pt {
       margin: 15px;
-      opacity: 1;
       background-color: #2f2439;
+      cursor: pointer;
+    }
+
+    .days, .hours, .minutes, .seconds {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+      width: 200px;
+      height: 200px;
+      margin: 10px;
+      background-color: hsl(236, 21%, 26%);
+      border-radius: 15px;
+    }
+
+    .time {
+      position: absolute;
+      display: flex;
+      align-items: space-between;
+      justify-content: space-between;
+      top: 200px;
+      right: 20%;
+      left: 20%;
+      opacity: 1;
+    }
+
+    .timep {
+      position: absolute;
+      display: flex;
+      justify-content: space-around;
+      top: 420px;
+      right: 20%;
+      left: 20%;
+      opacity: 1;
+      font-weight: bolder;
+      font-size: 20px;
+    }
+
+    .p1, .p2, .p3, .p4 {
+      color: hsl(236, 21%, 26%);
+      margin: 10px;
+    }
+
+    .t1, .t2, .t3, .t4 {
+      color: hsl(345, 95%, 68%);
+      background-color: hsl(236, 21%, 26%);
+      font-weight: bolder;
+      font-size: 100px;
+    }
+
+    .headline {
+      color: hsl(0, 0%, 100%);
+      font-size: 30px;
+      font-weight: bolder;
+      letter-spacing: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      top: 100px;
+      opacity: 1;
     }
 
 
@@ -54,9 +116,32 @@
 
   <main>
     <div class="bg">
-      <p>We're launching soon</p>
+      <p class="headline">We're launching soon</p>
       <img class="star" src="./images/bg-stars.svg" />
       <img class="hills" src="./images/pattern-hills.svg" />
+      
+      <div class="time">
+        <div class="days">
+          <p class="t1">10</p>
+        </div>
+        <div class="hours">
+          <p class="t2">20</p>
+        </div>
+        <div class="minutes">
+          <p class="t3">30</p>
+        </div>
+        <div class="seconds">
+          <p class="t4">40</p>
+        </div>
+      </div>
+
+      <div class="timep">
+        <p class="p1">days</p>
+        <p class="p2">hours</p>
+        <p class="p3">minutes</p>
+        <p class="p4">seconds</p>
+      </div>
+
       <div class="icon">
         <img class="fb" src="./images/icon-facebook.svg" />
         <img class="pt" src="./images/icon-pinterest.svg" />
@@ -65,10 +150,5 @@
     </div>
   </main>
 
-  Days
-  Hours
-  Minutes
-  Seconds
-  
 </body>
 </html>
