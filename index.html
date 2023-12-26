@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@1,700&display=swap" rel="stylesheet">
-
+<script src="./src/app.js"></script>
   
   <title>Launch countdown timer</title>
 
@@ -21,16 +21,13 @@
     }
 
     .bg {
-      position: relative;
       width: 100%;
-      height: 100%;
     }
 
     .hills {
-      position: relative;
       width: 100%;
       height: 100%;
-    }
+    } 
 
     .icon {
       position: absolute;
@@ -39,67 +36,104 @@
       justify-content: space-between;
       top: 670px;
       right: 680px;
+    }
+
+    a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.438);
+      font-size: 1.8rem;
+      transition: all 0.4s ease-in;
       background-color: #2f2439;
     }
 
     .fb, .ig, .pt {
       margin: 15px;
-      background-color: #2f2439;
       cursor: pointer;
+      border-radius: 10px;
     }
 
-    .days, .hours, .minutes, .seconds {
+    .container {
+      z-index: 1;
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
-      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
-      width: 200px;
-      height: 200px;
-      margin: 10px;
-      background-color: hsl(236, 21%, 26%);
-      border-radius: 15px;
-    }
-
-    .time {
-      position: absolute;
-      display: flex;
-      align-items: space-between;
-      justify-content: space-between;
-      top: 200px;
-      right: 20%;
-      left: 20%;
-      opacity: 1;
-    }
-
-    .timep {
-      position: absolute;
-      display: flex;
+      position: relative;
       justify-content: space-around;
-      top: 420px;
-      right: 20%;
-      left: 20%;
+      top: -600px;
       opacity: 1;
-      font-weight: bolder;
-      font-size: 20px;
     }
 
-    .p1, .p2, .p3, .p4 {
-      color: hsl(236, 21%, 26%);
-      margin: 10px;
+    .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
-    .t1, .t2, .t3, .t4 {
+    .countdown-font {
+      display: flex;
+      background: linear-gradient(hsl(235, 16%, 15%) 50%, 
+      hsl(237,21%, 20%)50%);
+      height: 150px;
+      width: 180px;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 2px 2px 4px 3px rgba(0, 0, 0, 0.377);
+      border-radius: 10px;
+      z-index: 1;
+      position: relative;
+      transition: transform 0.8s ease-in-out;
+      transform-style: preserve-3d;
+      cursor: pointer;
+      transform-origin: bottom;
+      transform: rotateX(0deg);
+      animation: flip-top 0.5s ease-in forwards;
+    }
+
+    .countdown-font.active {
+      transform: perspective(1000px) rotateX(90deg);
+    }
+
+    .countdown-font::after {
+      position: absolute;
+      content: "";
+      width: 8%;
+      height: 10%;
+      background-color: #0e0e0e;
+      left: 0px;
+      top: 44%;
+      border-radius: 0 50% 80% 0;
+    }
+
+    .countdown-font::before {
+      position: absolute;
+      content: "";
+      width: 8%;
+      height: 10%;
+      background-color: #0e0e0e;
+      right: 0px;
+      top: 44%;
+      border-radius: 50% 0 0 80%;
+    }
+
+    .text {
+      background: linear-gradient(hsl(235, 16%, 15%) 50%, 
+      hsl(237,21%, 20%)50%);
+      font-family: sans-serif;
       color: hsl(345, 95%, 68%);
-      background-color: hsl(236, 21%, 26%);
-      font-weight: bolder;
-      font-size: 100px;
+      cursor: pointer;
+      transition: all .4s ease-in;
+      font-size: 2.3rem;
+    }
+
+    .text:hover {
+      color: 345,82%, 52%;
     }
 
     .headline {
       color: hsl(0, 0%, 100%);
       font-size: 30px;
-      font-weight: bolder;
+      font-weight: lighter;
       letter-spacing: 3px;
       display: flex;
       align-items: center;
@@ -107,8 +141,23 @@
       position: relative;
       top: 100px;
       opacity: 1;
+      letter-spacing: 6px;
     }
 
+    .description {
+      font-family: sans-serif;
+      padding: 10px;
+      margin: 10px;
+      border: 10px;
+      color: hsl(0, 0%, 100%);
+      font-weight: lighter;
+      letter-spacing: 6px;
+    }
+
+    .days, .hours, .minutes, .seconds {
+    font-size: 5rem !important;
+    color: hsl(345, 95%, 68%) !important;
+    }
 
   </style>
 </head>
@@ -119,36 +168,44 @@
       <p class="headline">We're launching soon</p>
       <img class="star" src="./images/bg-stars.svg" />
       <img class="hills" src="./images/pattern-hills.svg" />
-      
-      <div class="time">
-        <div class="days">
-          <p class="t1">10</p>
+    </div>
+
+    <div class="icon">
+      <a href="#"><img class="fb" src="./images/icon-facebook.svg" /></a>
+      <a href="#"><img class="pt" src="./images/icon-pinterest.svg" /></a>
+      <a href="#"><img class="ig" src="./images/icon-instagram.svg" /></a>
+    </div>
+
+    <div class="container">
+      <div class="card">
+        <div class="countdown-font" id="days">
+          <h2 class="days">{time}</h2>
         </div>
-        <div class="hours">
-          <p class="t2">20</p>
-        </div>
-        <div class="minutes">
-          <p class="t3">30</p>
-        </div>
-        <div class="seconds">
-          <p class="t4">40</p>
-        </div>
+        <h3 class="description">Days</h3>
       </div>
 
-      <div class="timep">
-        <p class="p1">days</p>
-        <p class="p2">hours</p>
-        <p class="p3">minutes</p>
-        <p class="p4">seconds</p>
+      <div class="card">
+        <div class="countdown-font" id="hours">
+          <h2 class="hours">{time}</h2>
+        </div>
+        <h3 class="description">Hours</h3>
       </div>
 
-      <div class="icon">
-        <img class="fb" src="./images/icon-facebook.svg" />
-        <img class="pt" src="./images/icon-pinterest.svg" />
-        <img class="ig" src="./images/icon-instagram.svg" />
+      <div class="card">
+        <div class="countdown-font" id="minutes">
+          <h2 class="minutes">{time}</h2>
+        </div>
+        <h3 class="description">Minutes</h3>
+      </div>
+
+      <div class="card">
+        <div class="countdown-font" id="seconds">
+          <h2 class="seconds">{time}</h2>
+        </div>
+        <h3 class="description">Seconds</h3>
       </div>
     </div>
-  </main>
 
+  </main>
 </body>
 </html>
