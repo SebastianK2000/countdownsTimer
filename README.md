@@ -1,6 +1,8 @@
 # countdownsTimer
 
+## Link to the page: 
 
+## Screen
 
 ![image](https://github.com/SebastianK2000/countdownsTimer/assets/127401994/c0f4074c-c37b-42ff-ac26-e71f0f9ca6d0)
 
